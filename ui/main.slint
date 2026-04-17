@@ -1,21 +1,63 @@
+import { Button } from "std-widgets.slint";
+
 export component RCommander inherits Window {
-    title : "RCommander";
-    
-    preferred-width: 200px;
-    preferred-height: 100px;
+    min-width: 900px;
+    min-height: 600px;
 
-    background: #121212;
+    VerticalLayout {
+        spacing: 0px;
 
-    Text {
-        text: "test";
-        color: green;
-        font-size: 24px;
-        vertical-alignment: center;
-        horizontal-alignment: center;
+        // Menu bar
+        Rectangle {
+            height: 28px;
+            background: #2d2d2d;
+
+            HorizontalLayout {
+                padding-left: 4px;
+                padding-right: 4px;
+                spacing: 0px;
+
+                // Left side
+                HorizontalLayout {
+                    spacing: 0px;
+                    alignment: start;
+
+                    for label in ["Files", "Mark", "Commands", "Net", "Show", "Configuration"] : Rectangle {
+                        width: 90px;
+                        height: 28px;
+                        background: touch.has-hover ? #444 : transparent;
+                        touch := TouchArea {}
+                        Text {
+                            text: label;
+                            color: #e0e0e0;
+                            font-size: 13px;
+                            horizontal-alignment: center;
+                            vertical-alignment: center;
+                        }
+                    }
+                }
+
+                Rectangle { horizontal-stretch: 1; }
+
+                // Right side
+                Rectangle {
+                    width: 60px;
+                    height: 28px;
+                    background: touch-help.has-hover ? #444 : transparent;
+                    touch-help := TouchArea {}
+                    Text {
+                        text: "Help";
+                        color: #e0e0e0;
+                        font-size: 13px;
+                        horizontal-alignment: center;
+                        vertical-alignment: center;
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+            background: #1e1e1e;
+        }
     }
 }
-    Text {
-        text: "test";
-        color: green;
-      }
-  }
